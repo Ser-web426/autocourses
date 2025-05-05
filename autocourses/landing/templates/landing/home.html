@@ -1,0 +1,214 @@
+{% extends 'main/base.html' %} 
+
+{% load static %} 
+
+{% block title %}Главная - Автокурсы{% endblock %} 
+{% block content %}
+<div class="home" id="home">
+    <div class="home-section pb-5">
+        <div class="video-wrapper">
+            <video class="video" autoplay muted loop aria-hidden="true">
+                <source src="https://ratata.ru/_astro/ratata.Bq79FuY1.mp4" type="video/mp4" />
+            </video>
+            <img class="video-img" src="https://ratata.ru/_astro/screen.Cq2nmFWi.jpg" alt="" />
+            <div class="video-overlay"></div>
+        </div>
+        <div class="home-content text-center">
+            <h1 class="home-title">УЗНАЙ, КАК ТЫ РЕАЛЬНО УМЕЕШЬ ВОДИТЬ</h1>
+            <p class="home-description">Обучение вождению с лучшими инструкторами</p>
+            <div class="home-btns">
+                <a href="{% url 'main:course_list' %}" class="btn btn-primary btn-lg">Покажите курсы</a>
+                <a href="{% url 'main:login' %}" class="btn btn-outline-primary btn-lg">Войти в аккаунт</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="summary" id="for-who">
+        <div class="section-title">
+            <h1>УЗНАЙ, КАК УПРАВЛЯТЬ АВТО В ЛЮБЫХ СИТУАЦИЯХ</h1>
+        </div>
+        <div class="summary-content">
+            <div class="summary-item">
+                <div class="summary-text">
+                    <h2>ЕСЛИ ТЫ:</h2>
+                    <ul>
+                        <li>Не понимаешь, как ведет себя машина</li>
+                        <li>Чувствуешь себя неуверенно за рулем</li>
+                        <li>Боишься быстро ездить и маневрировать</li>
+                    </ul>
+                </div>
+                <div class="summary-img">
+                    <img src="https://ratata.ru/_astro/screen4_conuses.toGT2fG8_1ylrHO.webp" alt="" />
+                </div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-text">
+                    <h2>ИЛИ НАОБОРОТ</h2>
+                    <ul>
+                        <li>Думаешь, что все знаешь и умеешь</li>
+                        <li>Хочешь узнать пределы возможностей автомобиля</li>
+                        <li>Ищешь, как попасть в автоспорт</li>
+                    </ul>
+                </div>
+                <div class="summary-img">
+                    <img src="https://ratata.ru/_astro/screen4_wheel.D9nb3icm_Z1AgFt5.webp" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="exp">
+        <div class="section-title">
+            <h1>ТВОЙ ОПЫТ - НЕ ПРЕГРАДА</h1>
+        </div>
+        <div class="exp-content">
+            <div class="exp-item blue">
+                <h2>Неуверенный?</h2>
+                <ul class="exp-list">
+                    <li>Спокойно покатаешься в безопасной обстановке</li>
+                    <li>Разберешь свои страхи вместе с тренером</li>
+                    <li>Получишь удовольствие от вождения</li>
+                </ul>
+            </div>
+            <div class="exp-item gray">
+                <h2>Опытный?</h2>
+                <ul class="exp-list">
+                    <li>Узнаешь, как избежать типичных ошибок</li>
+                    <li>Отработаешь выход из аварийных ситуаций</li>
+                    <li>По-новому взглянешь на свою машину</li>
+                </ul>
+            </div>
+            <div class="exp-item red">
+                <h2>Бесстрашный?</h2>
+                <ul class="exp-list">
+                    <li>Докажешь, что ты топовый водитель</li>
+                    <li>Посоревнуешься с другими учениками в программе Skill</li>
+                    <li>Научишься дрифтить</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="with-us">
+        <div class="with-us-background"></div>
+        <div class="with-us-text container mx-auto">
+            <p>Готов влюбиться в вождение заново?</p>
+            <h2>УВИДИМСЯ НА ПОЛИГОНЕ!</h2>
+            <a href="{% url 'main:register_student' %}" class="btn btn-danger btn-lg">Зарегистрироваться</a>
+        </div>
+    </div>
+
+    <div class="instructors" id="for-instructors">
+        <div class="instructors-img">
+            <img src="{% static 'images/car.svg' %}" alt="" />
+        </div>
+        <div class="instructors-text">
+            <h2>ИМЕЕШЬ ОПЫТ ВОЖДЕНИЯ И ХОЧЕШЬ ПОПРОБОВАТЬ СЕБЯ В РОЛИ ИНСТРУКТОРА?</h2>
+            <a href="{% url 'main:register_instructor' %}" class="btn btn-outline-danger btn-lg">Стать инструктором</a>
+        </div>
+    </div>
+
+    <div class="faq" id="faq">
+        <div class="section-title">
+            <h1>ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ</h1>
+        </div>
+        <div class="faq-list container mx-auto">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Нужны ли права для прохождения курсов?</span>
+                    <span class="arrow">&#9662;</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Нет, наши курсы подходят даже для тех, кто никогда не сидел за
+                        рулём. Права не обязательны.
+                    </p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Какие машины используются?</span>
+                    <span class="arrow">&#9662;</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        У нас есть автомобили как с автоматической, так и с механической
+                        коробкой передач.
+                    </p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Можно ли вернуть деньги, если не понравится?</span>
+                    <span class="arrow">&#9662;</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Да, возврат возможен в течение 7 дней после начала занятий при
+                        уважительной причине.
+                    </p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Сколько длится курс?</span>
+                    <span class="arrow">&#9662;</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Продолжительность зависит от выбранной программы. В среднем — от 1
+                        до 4 недель.
+                    </p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Можно ли выбрать инструктора?</span>
+                    <span class="arrow">&#9662;</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Да, при записи на курс вы можете указать предпочтения по полу и
+                        стилю преподавания.
+                    </p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Есть ли обучение дрифту?</span>
+                    <span class="arrow">&#9662;</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Да! В продвинутой программе Skill мы обучаем базовым элементам
+                        дрифта на закрытых площадках.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="bg-danger text-white py-4 mt-5">
+    <div class="container text-center">
+        <p class="mb-1">&copy; 2025 Автокурсы. Все права защищены.</p>
+        <p class="mb-0">
+            Контакты:
+            <a href="mailto:info@autocourses.ru" class="text-white text-decoration-underline">info@autocourses.ru</a>
+        </p>
+    </div>
+</footer>
+
+<script>
+    document.querySelectorAll(".faq-question").forEach((button) => {
+        button.addEventListener("click", () => {
+            const item = button.closest(".faq-item");
+            const openItem = document.querySelector(".faq-item.open");
+            if (openItem && openItem !== item) {
+                openItem.classList.remove("open");
+            }
+            item.classList.toggle("open");
+        });
+    });
+</script>
+{% endblock %}

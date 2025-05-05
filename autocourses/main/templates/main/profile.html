@@ -1,0 +1,75 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Профиль - {{user.full_name}}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Профиль</h2>
+    <div class="card mb-4">
+        <div class="card-body">
+            <p class="card-text"><strong>Имя:</strong> {{ user.full_name }}</p>
+            <p class="card-text"><strong>Роль:</strong> {{ user.get_role_display }}</p>
+        </div>
+    </div>
+
+    {% if user.role == 'instructor' %}
+        <h3>Курсы, где вы автор:</h3>
+        <ul class="list-group mb-4">
+            {% for course in user.authored_courses.all %}
+                <li class="list-group-item px-5 d-flex justify-content-between align-items-center">
+                    <a href="{% url 'main:course_detail' course.id %}">{{ course.title }}</a>
+                    <div class="course-actions">
+                        <form action="{% url 'main:hide_course' course.id %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-warning btn-sm">
+                                {% if course.is_hidden %}Показать{% else %}Скрыть{% endif %}
+                            </button>
+                        </form>
+                        <a href="{% url 'main:edit_course' course.id %}" class="btn btn-primary btn-sm">Редактировать курс</a>
+                        <form action="{% url 'main:delete_course' course.id %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Вы уверены, что хотите удалить курс \"{{ course.title }}\"?');">Удалить</button>
+                        </form>
+                    </div>
+                </li>
+            {% empty %}
+                <li class="list-group-item px-5">Нет курсов.</li>
+            {% endfor %}
+        </ul>
+        <p><a href="{% url 'main:create_course' %}" class="btn btn-primary">Создать новый курс</a></p>
+
+        <h3>Заявки на подтверждение студентов:</h3>
+        <ul class="list-group mb-4">
+            {% for enrollment in enrollments %}
+                <li class="list-group-item d-flex px-5 justify-content-between align-items-center">
+                    <div class="list-group-enroll-info">
+                        {{ enrollment.student.full_name }} ({{enrollment.student.phone_number}})
+                        <p> {{ enrollment.course.title }}</p>
+                    </div>
+                    <div class="enroll-links">
+                        <form action="{% url 'main:confirm_enrollment' enrollment.id %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-success btn-sm">Подтвердить</button>
+                        </form>
+                        <a href="{% url 'main:reject_enrollment' enrollment.id %}" class="btn btn-sm btn-danger">Отклонить</a>
+                    </div>
+                </li>
+            {% empty %}
+                <li class="list-group-item px-5">Нет заявок на подтверждение.</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>Ваши курсы:</h3>
+        <ul class="list-group mb-4">
+            {% for enrollment in enrollments %}
+                <li class="list-group-item px-5">
+                    <a href="{% url 'main:course_detail' enrollment.course.id %}">{{ enrollment.course.title }}</a> -
+                    {{ enrollment.get_status_display }}
+                </li>
+            {% empty %}
+                <li class="list-group-item px-5">Вы не записаны на курсы.</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+{% endblock %}

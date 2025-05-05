@@ -1,0 +1,134 @@
+{% extends 'main/base.html' %} 
+
+{% block title %}{{ course.title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      {% if course.image %}
+      <img
+        src="{{ course.image.url }}"
+        alt="{{ course.image.url }}"
+        class="img-fluid rounded shadow-sm"
+      />
+      {% else %}
+      <div
+        class="course-image-placeholder d-flex align-items-center justify-content-center"
+      >
+        <i class="bi bi-image fs-1 text-secondary"></i>
+      </div>
+      {% endif %}
+    </div>
+    <div class="col-md-6">
+      <h2>{{course.title}}</h2>
+      <p>
+        <strong>Описание:</strong> <br />
+        {{ course.description | linebreaksbr}}
+      </p>
+      <p><strong>Дата начала:</strong> {{ course.start_date }}</p>
+      <p><strong>Дата окончания:</strong> {{ course.end_date }}</p>
+      <p><strong>Стоимость:</strong> {{ course.price }} руб.</p>
+      <p>
+        <strong>Авторы:</strong>
+        {% for author in course.authors.all %} 
+        {{ author.full_name }}
+        {% if not forloop.last %}, 
+        {% endif %} 
+        {% empty %}
+        Нет авторов
+        {% endfor %}
+      </p>
+
+      {% if user in course.authors.all %}
+      <hr />
+      <h4>Подтверждённые участники ({{ confirmed_enrollments|length }})</h4>
+      {% if confirmed_enrollments %}
+      <div class="list-group">
+        {% for enr in confirmed_enrollments %}
+        <div
+          class="list-group-item px-2 d-flex justify-content-between align-items-center"
+        >
+          <div class="enroll-info">
+            <strong>{{ enr.student.full_name }}</strong>
+            <p class="mb-0 text-muted">{{ enr.student.phone_number }}</p>
+          </div>
+          <div class="enroll-links">
+            <a
+              href="{% url 'main:exclude_student' enr.id %}"
+              class="btn btn-sm btn-danger"
+              onclick="return confirm('Вы уверены, что хотите исключить этого участника?')"
+            >
+              Исключить
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="text-muted">Нет подтверждённых участников.</p>
+      {% endif %}
+
+      <hr />
+      <h4>Заявки на подтверждение ({{ pending_enrollments|length }})</h4>
+      {% if pending_enrollments %}
+      <div class="list-group">
+        {% for enr in pending_enrollments %}
+        <div
+          class="list-group-item px-2 d-flex justify-content-between align-items-center"
+        >
+          <div>
+            <strong>{{ enr.student.full_name }}</strong>
+            <p class="mb-0 text-muted">{{ enr.student.phone_number }}</p>
+          </div>
+          <div class="enroll-links">
+            <form
+              action="{% url 'main:confirm_enrollment' enr.id %}"
+              method="post"
+              class="d-inline"
+            >
+              {% csrf_token %}
+              <button type="submit" class="btn btn-success btn-sm">
+                Подтвердить
+              </button>
+            </form>
+            <a
+              href="{% url 'main:reject_enrollment' enr.id %}"
+              class="btn btn-sm btn-danger"
+              >Отклонить</a
+            >
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="text-muted">Нет заявок на подтверждение.</p>
+      {% endif %} {% endif %} {% if user.role == 'student' %}
+      <div class="enrollment-actions">
+        {% if enrollment %} {% if enrollment.status == 'pending' %}
+        <p class="status">Статус: Заявка отправлена</p>
+        <a
+          href="{% url 'main:unenroll_from_course' course.id %}"
+          class="btn btn-danger"
+          >Отменить заявку</a
+        >
+        {% else %}
+        <p class="status">Статус: Вы записаны на курс</p>
+        <a
+          href="{% url 'main:unenroll_from_course' course.id %}"
+          class="btn btn-danger"
+          >Отписаться</a
+        >
+        {% endif %} {% else %}
+        <a
+          href="{% url 'main:enroll_in_course' course.id %}"
+          class="btn btn-success"
+          >Записаться на курс</a
+        >
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,746 @@
+/* Общие стили */
+:root {
+  --bs-blue: #0d6efd;
+  --bs-indigo: #6610f2;
+  --bs-purple: #6f42c1;
+  --bs-pink: #d63384;
+  --bs-red: #dc3545;
+  --bs-orange: #fd7e14;
+  --bs-yellow: #ffc107;
+  --bs-green: #198754;
+  --bs-teal: #20c997;
+  --bs-cyan: #0dcaf0;
+  --bs-white: #ffffff;
+  --bs-gray: #6c757d;
+  --bs-gray-dark: #343a40;
+  --bs-primary: #0d6efd;
+  --bs-secondary: #6c757d;
+  --bs-success: #198754;
+  --bs-info: #0dcaf0;
+  --bs-warning: #ffc107;
+  --bs-danger: #dc3545;
+  --bs-light: #f8f9fa;
+  --bs-dark: #212529;
+}
+
+body {
+  background-color: #f8f9fa;
+  font-family: "Nunito Sans", sans-serif !important;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+.line-clamp-5 {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.list-group-item {
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.list-group-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Навигационная панель */
+.navbar {
+  height: 7dvh;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: white !important;
+}
+
+.alert {
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Карточка курса */
+.course-card {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
+}
+
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.course-card .card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 0.75rem;
+}
+
+.course-card .card-text {
+  font-size: 1rem;
+  color: #6c757d;
+  line-height: 1.4;
+}
+
+.course-image {
+  height: 180px;
+  object-fit: cover;
+}
+
+.course-image-placeholder {
+  height: 180px;
+  background-color: #e9ecef;
+}
+
+/* Состояние заявки */
+.status {
+  font-weight: bold;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: #e9f7ef;
+  color: #155724;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.enrollment-actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.enrollment-actions .btn {
+  margin-top: 0.5rem;
+}
+
+.enroll-links a,
+.enroll-links a:hover {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+/* Existing Styles (from previous responses) */
+.form-card {
+  max-width: 40%;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  border-radius: 8px;
+  border: 2px solid #e9ecef;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+.form-error {
+  color: var(--bs-red);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.form-actions {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Главная страница */
+
+/* Домашняя секция */
+.home-section {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+}
+
+.home-content {
+  position: absolute;
+  left: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 10%;
+  align-items: start;
+}
+
+.home-title {
+  width: 60%;
+  font-weight: 800;
+  font-size: 64px;
+  text-align: start;
+  color: var(--bs-primary);
+  line-height: 1;
+}
+
+.home-description {
+  font-weight: 500;
+  color: white;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.video-wrapper {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Видео заполняет весь блок */
+}
+
+/* "Для кого" секция */
+.summary {
+  width: 100%;
+  background-color: #f8f8f8;
+}
+
+.section-title h1 {
+  color: var(--bs-primary);
+  text-align: center;
+  font-size: 3em;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+
+.summary-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+  min-height: 200px;
+  background-color: var(--bs-red);
+  height: 40dvh;
+}
+
+.summary-item:nth-child(2) {
+  flex-direction: row-reverse;
+}
+
+.summary-text {
+  flex: 1;
+  padding: 20px;
+  color: white;
+  background-color: var(--bs-primary);
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.summary-text h2 {
+  font-size: 30px;
+  font-weight: 800;
+  color: white;
+}
+.summary-text li {
+  font-size: 20px;
+}
+
+.summary-item:nth-child(2) .summary-text {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
+}
+
+.summary-img {
+  flex: 1;
+  overflow: hidden;
+  background-color: var(--bs-primary);
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.summary-item:nth-child(2) .summary-img {
+  clip-path: polygon(0 0, 85% 0, 100% 100%, 0 100%);
+}
+
+.summary-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Секция про опыт */
+.exp {
+  width: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.exp h1 {
+  color: var(--bs-primary);
+  text-align: center;
+  font-size: 3em;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+
+.exp-content {
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.exp-item h2 {
+  font-weight: bold;
+}
+
+.exp-item ul {
+  font-weight: 600;
+  list-style: none;
+  padding-left: 0;
+}
+
+.exp-item li {
+  font-size: 20px;
+  line-height: 1.2;
+  position: relative;
+  padding-left: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.exp-item li::before {
+  content: "✔"; /* галочка */
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.exp-item {
+  width: 30%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exp-item.blue,
+.exp-item.blue h2 {
+  border: 1px solid var(--bs-primary);
+  background-color: var(--bs-primary);
+  color: white;
+}
+
+.exp-item.red,
+.exp-item.red h2 {
+  border: 1px solid var(--bs-red);
+  background-color: var(--bs-red);
+  color: white;
+}
+
+.exp-item.gray {
+  border: 1px solid var(--bs-gray);
+  color: var(--bs-gray);
+}
+
+.exp-item.gray h2 {
+  color: var(--bs-gray);
+}
+
+/* Секция с переходом на регистрацию */
+.with-us {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 550px;
+  background-size: cover;
+  position: relative;
+}
+
+.with-us-text {
+  z-index: 1;
+}
+.with-us-text p {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+.with-us-text h2 {
+  font-size: 2.5em;
+  font-weight: 800;
+  color: var(--bs-red);
+}
+.with-us-background {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 75%),
+      rgba(255, 255, 255, 40%) 64.04%
+    ),
+    url("https://ratata.ru/_astro/with_us.CE4Rf16S.jpg");
+}
+
+.with-us-background__mobile {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  background-image: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 75%),
+      rgba(255, 255, 255, 40%) 64.04%
+    ),
+    url("https://ratata.ru/_astro/with_us_mobile.DMqrd1uH.jpg");
+}
+
+/* Секция для инструкторов */
+.instructors {
+  width: 100%;
+  padding: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60dvh;
+}
+.instructors-text {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.instructors-text h2 {
+  color: var(--bs-primary);
+  font-weight: 800;
+  font-size: 2.5em;
+  text-align: center;
+}
+.instructors-img {
+  width: 40%;
+}
+.instructors-img img {
+}
+
+/* Секция FAQ */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-bottom: 40px;
+}
+
+.faq-item {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+
+.faq-item.open {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+  width: 100%;
+  background: var(--bs-primary);
+  color: white;
+  font-weight: 600;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s;
+}
+
+.faq-question:hover {
+  background: var(--bs-primary-dark, #004080);
+}
+
+.faq-question .arrow {
+  transition: transform 0.3s ease;
+}
+
+.faq-item.open .faq-question .arrow {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  background: #f9f9f9;
+  color: #333;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.faq-answer p {
+  margin: 15px 0;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 300px;
+  padding: 15px 20px;
+}
+
+/* Адаптивный дизайн */
+@media (max-width: 576px) {
+  main.container {
+    padding: 1rem;
+  }
+  .navbar-toggler {
+    padding: 10px;
+  }
+  .navbar-toggler:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  .navbar-collapse {
+    padding: 10px;
+    height: fit-content;
+    display: flex;
+    width: 100%;
+    background-color: var(--bs-primary);
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .navbar-nav:nth-child(2) {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .navbar-nav:nth-child(2) .nav-item:nth-child(2),
+  .navbar-nav:nth-child(2) .nav-item:nth-child(2) button {
+    width: 100%;
+  }
+  .navbar-nav:nth-child(2) .nav-item:nth-child(2) a {
+    text-align: center;
+  }
+  .navbar-nav:nth-child(2)::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #fff;
+    margin: 0.5rem 0;
+  }
+
+  .navbar-nav:nth-child(1) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .section-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .section-title h1 {
+    width: 90%;
+    font-size: 2em;
+  }
+
+  .course-card {
+    margin-bottom: 1rem;
+  }
+
+  .form-card {
+    max-width: 100%;
+  }
+
+  .home-content {
+    padding-top: 20%;
+    align-items: center;
+    left: 0;
+  }
+  .home-content h1 {
+    width: 90%;
+    font-size: 3em;
+    text-align: center;
+  }
+  .home-description {
+    width: 70%;
+  }
+  .home-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .video {
+    display: none !important;
+  }
+  .video-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .summary-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 80dvh;
+  }
+
+  .summary-item:nth-child(2) {
+    flex-direction: column;
+  }
+
+  .summary-text {
+    padding: 20px;
+    color: white;
+    background-color: var(--bs-primary);
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .summary-text h2 {
+    font-size: 30px;
+    font-weight: 800;
+    color: white;
+  }
+  .summary-text li {
+    font-size: 20px;
+  }
+
+  .summary-item:nth-child(2) .summary-text {
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  }
+
+  .summary-img {
+    height: 30dvh;
+    overflow: hidden;
+    background-color: var(--bs-primary);
+    clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .summary-item:nth-child(2) .summary-img {
+    clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .exp-content {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .exp-item {
+    width: 100%;
+  }
+
+  .instructors {
+    flex-direction: column;
+    height: fit-content;
+  }
+  .instructors-text {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .instructors-text h2 {
+    font-size: 2em;
+  }
+  .instructors-img {
+    width: 100%;
+  }
+  .instructors-img img {
+    width: 100%;
+    object-fit: cover;
+  }
+  .enroll-info{
+    width: 50%;
+  }
+
+  .enroll-links {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .enroll-links button {
+    width: 100%;
+  }
+
+  .list-group-item{
+    padding: 10px !important; 
+  }
+
+  .course-actions{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .course-actions button{
+    width: 100%;
+  }
+}
