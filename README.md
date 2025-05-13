@@ -34,17 +34,22 @@ python -m venv .venv
 ```bash
 pip install -r requirements.txt 
 ```
-4. Создание миграции
+4. Создание базы данных
+Создаём базу данных с именем
+```bash
+autocourses_db
+```
+5. Создание миграции
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
-5. Создание суперюзера
+6. Создание суперюзера
 ```bash
 python manage.py createsuperuser
 ```
-6. Запуск локального сервера
+7. Запуск локального сервера
 ```bash
 python manage.py runserver
 ```
-7. Открыть в браузере [http://127.0.0.1:8000](http://127.0.0.1:8000)
+8. Открыть в браузере [http://127.0.0.1:8000](http://127.0.0.1:8000)
